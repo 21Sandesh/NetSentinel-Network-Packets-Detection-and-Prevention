@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login & Signup</title>
+
+    <link href="/assets/images/logo-mini.svg" rel="icon" />
+    <link href="/assets/images/logo-mini.svg" rel="apple-touch-icon" />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
+  <body>
+    <script src="/script/canvas.js"></script>
+    <canvas id="myCanvas"></canvas>
+    <script src="/script/functions.js"></script>
+
+    <% if (messages.error && messages.error.length > 0) { %>
+    <div class="flash-message error">
+      <% messages.error.forEach(message => { %>
+      <p><%= message %></p>
+      <% }); %>
+    </div>
+    <% } %> <% if (messages.success && messages.success.length > 0) { %>
+    <div class="flash-message success">
+      <% messages.success.forEach(message => { %>
+      <p><%= message %></p>
+      <% }); %>
+    </div>
+    <% } %>
+    <div class="section">
+      <div class="container">
+        <div class="row full-height justify-content-center">
+          <div class="col-12 text-center align-self-center py-5">
+            <div class="section pb-5 pt-5 pt-sm-2 text-center">
+              <h6 class="mb-0 pb-3" style="color: black">
+                <span>Log In </span><span>Sign Up</span>
+              </h6>
+              <input
+                class="checkbox"
+                type="checkbox"
+                id="reg-log"
+                name="reg-log"
+              />
+              <label for="reg-log"></label>
+              <div class="card-3d-wrap mx-auto">
+                <div class="card-3d-wrapper">
+                  <div class="card-front">
+                    <div class="center-wrap">
+                      <div class="section text-center">
+                        <h4 class="mb-4 pb-3">Log In</h4>
+                        <form id="loginform" action="/auth/login" method="post">
+                          <div class="form-group">
+                            <input
+                              type="email"
+                              name="emailOrUsername"
+                              class="form-style"
+                              placeholder="Username / Email"
+                              id="logloginemail"
+                              autocomplete="none"
+                            />
+                            <i class="input-icon uil uil-at"></i>
+                          </div>
+                          <div class="form-group mt-2">
+                            <input
+                              type="password"
+                              name="password"
+                              class="form-style"
+                              placeholder="Your Password"
+                              id="logloginpass"
+                              autocomplete="none"
+                            />
+                            <i class="input-icon uil uil-lock-alt"></i>
+                          </div>
+                          <div class="form-recaptcha">
+                            <div
+                              class="recaptcha-style g-recaptcha"
+                              data-sitekey="6Ld3ZLgpAAAAAEx-yF9bxlmI9j4aPDPTyFMpz4S6"
+                              data-action="recaptchaToken"
+                            ></div>
+                          </div>
+                          <input
+                            type="hidden"
+                            name="recaptchaLoginResponse"
+                            id="recaptchaLoginResponse"
+                          />
+                          <button
+                            id="loginButton"
+                            type="submit"
+                            class="btn mt-4"
+                          >
+                            Log In
+                          </button>
+                          <p class="mb-0 mt-4 text-center">
+                            <a href="#0" class="link">Forgot your password?</a>
+                          </p>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-back">
+                    <div class="center-wrap">
+                      <div class="section text-center">
+                        <h4 class="mb-4 pb-3">Sign Up</h4>
+                        <form
+                          id="signupform"
+                          action="/auth/signup"
+                          method="post"
+                        >
+                          <div class="form-group">
+                            <input
+                              type="text"
+                              name="username"
+                              class="form-style"
+                              placeholder="Username"
+                              id="logname"
+                              autocomplete="none"
+                            />
+                            <i class="input-icon uil uil-user"></i>
+                          </div>
+                          <div class="form-group mt-2">
+                            <input
+                              type="email"
+                              name="email"
+                              class="form-style"
+                              placeholder="Your Email"
+                              id="logsignupemail"
+                              autocomplete="none"
+                            />
+                            <i class="input-icon uil uil-at"></i>
+                          </div>
+                          <div class="form-group mt-2">
+                            <input
+                              type="password"
+                              name="password"
+                              class="form-style"
+                              placeholder="Your Password"
+                              id="logsignuppass"
+                              autocomplete="none"
+                            />
+                            <i class="input-icon uil uil-lock-alt"></i>
+                          </div>
+                          <div class="form-recaptcha">
+                            <div
+                              class="recaptcha-style g-recaptcha"
+                              data-sitekey="6Ld3ZLgpAAAAAEx-yF9bxlmI9j4aPDPTyFMpz4S6"
+                              data-action="recaptchaToken"
+                            ></div>
+                          </div>
+                          <input
+                            type="hidden"
+                            name="recaptchaSignupResponse"
+                            id="recaptchaSignupResponse"
+                          />
+                          <button
+                            id="signupButton"
+                            type="submit"
+                            class="btn mt-4"
+                          >
+                            Sign Up
+                          </button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("loginButton")
+          .addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Execute script to set recaptchaResponse
+            var formData = new FormData(document.getElementById("loginform"));
+            var recaptchaResponse = [...formData][2][1];
+            document.getElementById("recaptchaLoginResponse").value =
+              recaptchaResponse;
+            console.log(recaptchaResponse);
+            // Now, submit the form
+            document.getElementById("loginform").submit();
+          });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("signupButton")
+          .addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Execute script to set recaptchaResponse
+            var formData = new FormData(document.getElementById("signupform"));
+            var recaptchaResponse = [...formData][3][1];
+            document.getElementById("recaptchaSignupResponse").value =
+              recaptchaResponse;
+            // Now, submit the form
+            document.getElementById("signupform").submit();
+          });
+      });
+    </script>
+  </body>
+</html>

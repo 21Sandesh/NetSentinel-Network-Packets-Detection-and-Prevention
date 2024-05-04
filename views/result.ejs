@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Results</title>
+</head>
+<body>
+    <h1>ML Results</h1>
+    <table border="1">
+        <tr>
+            <th>Algorithm</th>
+            <th>Accuracy</th>
+            <th>Precision</th>
+            <th>Recall</th>
+            <th>F1-Score</th>
+            <th>ROC-AUC</th>
+        </tr>
+        <% results.forEach(result => { %>
+            <tr>
+                <td><%= result.algorithm %></td>
+                <% result.scores.forEach(score => { %>
+                    <td><%= score %></td>
+                <% }); %>
+            </tr>
+        <% }); %>
+    </table>
+</body>
+</html>

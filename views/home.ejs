@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>NetSentinel Homepage</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+
+    <!-- Favicons -->
+    <link href="/assets/images/logo-mini.svg" rel="icon" />
+    <link href="/assets/images/logo-mini.svg" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Montserrat:300,400,700"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap CSS File -->
+    <link href="/homepage/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Libraries CSS Files -->
+    <link href="/homepage/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/homepage/lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="/homepage/lib/ionicons/css/ionicons.min.css" rel="stylesheet" />
+    <link href="/homepage/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="/homepage/lib/magnific-popup/magnific-popup.css" rel="stylesheet" />
+    <link href="/homepage/lib/ionicons/css/ionicons.min.css" rel="stylesheet" />
+
+    <!-- Main Stylesheet File -->
+    <link href="/homepage/css/style.css" rel="stylesheet" />
+
+  </head>
+
+  <body id="body">
+    <script src="/script/canvas.js"></script>
+    <canvas id="myCanvas"></canvas>
+
+    <div id="flash-messages">
+      <% if (messages.error && messages.error.length > 0) { %>
+      <div class="flash-message error">
+        <% messages.error.forEach(message => { %>
+        <p><%= message %></p>
+        <% }); %>
+      </div>
+      <% } %> <% if (messages.success && messages.success.length > 0) { %>
+      <div class="flash-message success">
+        <% messages.success.forEach(message => { %>
+        <p><%= message %></p>
+        <% }); %>
+      </div>
+      <% } %>
+    </div>
+
+    <!--==========================
+    Top Bar
+  ============================-->
+    <section id="topbar" class="d-none d-lg-block">
+      <div class="container clearfix">
+        <div class="contact-info float-left" style="color: #acacac">
+          <i class="fa fa-envelope-o"></i>
+          <a href="mailto:sandesh.kawane21@vit.edu">sandesh.kawane21@vit.edu</a>
+          <i class="fa fa-phone"></i><a href="https://github.com/21sandesh">github.com/21sandesh</a>
+        </div>
+        <div class="social-links float-right">
+          <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+          <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+          <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+          <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+          <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!--==========================
+    Header
+  ============================-->
+    <header id="header">
+      <div class="container">
+        <div id="logo" class="pull-left" style="padding-top: 8px">
+          <a href="dashboard"
+            ><img src="/homepage/img/logo.svg" style="width: 210px" alt="logo"
+          /></a>
+        </div>
+
+        <nav id="nav-menu-container">
+          <ul class="nav-menu">
+            <li class="menu-active"><a href="#body">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#Features">Features</a></li>
+            <li><a href="#Results">Results</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <!-- #nav-menu-container -->
+      </div>
+    </header>
+    <!-- #header -->
+
+    <!--==========================
+    Intro Section
+  ============================-->
+    <section id="intro">
+      <div class="intro-content">
+        <h2>NetSentinel: <span>Network Packets </span><br />Detection and Prevention</h2>
+        <div>
+          <a href="/auth" class="btn-get-started scrollto">Log In</a>
+          <a href="/auth?signup=true" class="btn-projects scrollto">Sign Up</a>
+        </div>
+      </div>
+
+      <div id="intro-carousel" class="owl-carousel">
+        <div class="item">
+          <video autoplay muted loop>
+            <source src="/homepage/video/homepage.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </section>
+    <!-- #intro -->
+
+    <main id="main">
+      <!--==========================
+      About Section
+    ============================-->
+      <section id="about" class="wow fadeInUp">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 about-img">
+              <img src="/homepage/img/about-img.png" alt="" />
+            </div>
+
+            <div class="col-lg-6 content">
+              <h2>NetSentinel: Network Packets Detection and Prevention</h2>
+              <h3>
+                NetSentinel is an network security tool developed as part of an engineering project to detect and prevent potential threats in real-time. The aim is to provide a comprehensive solution for analyzing network traffic, identifying suspicious activity, and taking proactive measures to safeguard network infrastructure.
+              </h3>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- #about -->
+
+      <!--==========================
+      Features Section
+    ============================-->
+      <section id="Features">
+        <div class="container">
+          <div class="green_bg">
+            <div class="section-header">
+            <h2>Features</h2>
+            <p>
+              Sed tamen tempor magna labore dolore dolor sint tempor duis magna
+              elit veniam aliqua esse amet veniam enim export quid quid veniam
+              aliqua eram noster malis nulla duis fugiat culpa esse aute nulla
+              ipsum velit export irure minim illum fore
+            </p>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="box wow fadeInLeft">
+                <div class="icon"><i class="fa fa-bar-chart"></i></div>
+                <h4 class="title"><a href="" style="color: #ffffff;"> Live Packet Capture</a></h4>
+                <p class="description" style="color: #acacac; font-size: 16px;">
+                  Captures live network packets, providing real-time monitoring and analysis. This feature allows users to stay informed about network activity as it happens, enabling prompt detection of potential threats.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="box wow fadeInRight">
+                <div class="icon"><i class="fa fa-picture-o"></i></div>
+                <h4 class="title"><a href="" style="color: #ffffff;">Attack Prediction</a></h4>
+                <p class="description" style="color: #acacac; font-size: 16px;">
+                  Using machine learning algorithms, NetSentinel predicts potential attacks by analyzing patterns in network traffic. This approach helps users anticipate security risks and take preventive measures before an attack occurs.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="box wow fadeInLeft" data-wow-delay="0.2s">
+                <div class="icon"><i class="fa fa-shopping-bag"></i></div>
+                <h4 class="title"><a href="" style="color: #ffffff;">Prevention Mechanisms</a></h4>
+                <p class="description" style="color: #acacac; font-size: 16px;">
+                  Implements various prevention mechanisms to mitigate security risks, including HTTPS encryption, session management, and password security measures ensuring robust protection against common vulnerabilities and attack vectors.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="box wow fadeInRight" data-wow-delay="0.2s">
+                <div class="icon"><i class="fa fa-map"></i></div>
+                <h4 class="title"><a href="" style="color: #ffffff;">Customizable Dashboard</a></h4>
+                <p class="description" style="color: #acacac; font-size: 16px;">
+                  Offers an intuitive dashboard that allows users to customize their view of network activity. With customizable metrics and alerts, users can focus on the information most relevant to their security needs, facilitating efficient monitoring and response.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- #How it Works -->
+
+      <!--==========================
+      Results Section
+    ============================-->
+      <section id="Results" class="wow fadeInUp">
+        <div class="container">
+          <div class="white_bg">
+            <div class="section-header">
+            <h2 style="color: #ffffff;">Results</h2>
+            <p style="color: #acacac;">
+              Sed tamen tempor magna labore dolore dolor sint tempor duis magna
+              elit veniam aliqua esse amet veniam enim export quid quid veniam
+              aliqua eram noster malis nulla duis fugiat culpa esse aute nulla
+              ipsum velit export irure minim illum fore
+            </p>
+          </div>
+      </section>
+      <!-- #Results -->
+
+      <!--==========================
+      Contact Section
+    ============================-->
+      <section id="contact" class="wow fadeInUp">
+        <div class="container">
+          <div class="section-header">
+            <div class="green_bg">
+            <div class="section-header">
+            <h2>Contact</h2>
+          </div>
+          </div>
+
+        <div class="container mb-4">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.4421288998346!2d73.8656287751903!3d18.46362188261891!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2ea950f616219%3A0x321bdae2cea9f064!2sVishwakarma%20Institute%20of%20Technology%20(VIT)!5e0!3m2!1sen!2sin!4v1713638632130!5m2!1sen!2sin"
+            width="100%"
+            height="380"
+            frameborder="0"
+            style="border: 0"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+      <!-- #contact -->
+    </main>
+
+    <!--==========================
+    Footer
+  ============================-->
+    <footer id="footer">
+      <div class="container">
+        <div class="credits">
+          NetSentinel: Developed by <a href="https://github.com/21sandesh">Sandesh Kawane</a>
+        </div>
+      </div>
+    </footer>
+    <!-- #footer -->
+
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="/homepage/lib/jquery/jquery.min.js"></script>
+    <script src="/homepage/lib/jquery/jquery-migrate.min.js"></script>
+    <script src="/homepage/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/homepage/lib/easing/easing.min.js"></script>
+    <script src="/homepage/lib/superfish/hoverIntent.js"></script>
+    <script src="/homepage/lib/superfish/superfish.min.js"></script>
+    <script src="/homepage/lib/wow/wow.min.js"></script>
+    <script src="/homepage/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/homepage/lib/magnific-popup/magnific-popup.min.js"></script>
+    <script src="/homepage/lib/sticky/sticky.js"></script>
+
+    <!-- Template Main Javascript File -->
+    <script src="/homepage/js/main.js"></script>
+
+    <script>
+      setTimeout(function () {
+        document.getElementById("flash-messages").innerHTML = "";
+      }, 7000); // Remove flash messages after 5 seconds
+    </script>
+    
+  </body>
+</html>
