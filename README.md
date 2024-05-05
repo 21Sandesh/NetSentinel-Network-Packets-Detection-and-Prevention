@@ -1,6 +1,6 @@
-# NetGuardian: Network Intrusion Detection and Prevention Web Application
+# NetSentinel: Network Intrusion Detection and Prevention Web Application
 
-NetGuardian is a comprehensive web application developed in Node.js with MongoDB for database management. It provides robust features for network intrusion detection and prevention, combining packet analysis, machine learning, and real-time monitoring to safeguard network infrastructures against malicious activities.
+NetSentinel is a comprehensive web application developed in Node.js with MongoDB for database management. It provides robust features for network intrusion detection and prevention, combining packet analysis, machine learning, and real-time monitoring to safeguard network infrastructures against malicious activities.
 
 ## Features:
 
