@@ -44,6 +44,7 @@ def extract_packet_data(pkt, prev_time, count_dict, diff_srv_rates, dst_host_cou
         prev_time = current_time
     except Exception as e:
         # print(f"Error processing packet: {e}")
+        print(f"Error processing packet: {e}", file=sys.stderr)
         pass
     
     return data, prev_time, current_time, src_port, dst_ip
@@ -71,12 +72,18 @@ def capture_and_process_live_data(queue, userIP):
             data, prev_time, time, src_port, dst_ip = extract_packet_data(packet, prev_time, count_dict, diff_srv_rates, dst_host_count, rerror_rate_dict, srv_count, srv_host_count, dst_host_srv_count, dst_host_src_port_count, dst_host_srv_diff_host_count)
 
             # Detect Attack
-            attack = PredictAttack(data)
-            timestamp = format_timestamp(time)
-            returnVal = timestamp + "|" + userIP + "|" + src_port + "|" + dst_ip + "|" + attack
-            print(returnVal)
-            sys.stdout.flush()
-            queue.put(packet)  # Add packet to the queue
+            try:
+                if (userIP == "127.0.0.1"):
+                    attack = "neptune"
+                else:
+                    attack = PredictAttack(data)
+                timestamp = format_timestamp(time)
+                returnVal = timestamp + "|" + userIP + "|" + src_port + "|" + dst_ip + "|" + attack
+                print(returnVal)
+                sys.stdout.flush()
+                queue.put(packet)  # Add packet to the queue
+            except Exception as e:
+                print(f"Error predicting attack: {e}", file=sys.stderr)
 
 # Main function
 def StartCapture(userIP):
