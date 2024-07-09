@@ -50,6 +50,51 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="/assets/css/style.css" />
     <!-- End layout styles -->
+    <!-- Include Select2 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .select2-container--default .select2-selection--single {
+        background-color: #191c24;
+        border: 0px solid #ced4da;
+        border-radius: 0.25rem;
+        border-radius: 0.25rem;
+        height: calc(1.5em + 0.75rem + 2px);
+        line-height: 1.5em;
+      }
+
+      .select2-container--default
+        .select2-selection--single
+        .select2-selection__rendered {
+        line-height: calc(1.5em + 0.75rem);
+        padding-left: 0.75rem;
+      }
+
+      .select2-container--default
+        .select2-selection--single
+        .select2-selection__arrow {
+        height: calc(1.5em + 0.75rem + 2px);
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0.5rem;
+      }
+
+      .select2-dropdown {
+        background-color: #f8f9fa;
+      }
+
+      .select2-results__option {
+        color: #495057;
+      }
+
+      .select2-container {
+        max-width: 100%;
+        width: auto !important;
+        display: inline-block;
+      }
+    </style>
   </head>
   <body>
     <script src="/script/canvas.js"></script>
@@ -447,10 +492,34 @@
                               </div>
                             </th>
                             <th>Timestamp</th>
-                            <th>Source IP</th>
-                            <th>Source Port</th>
-                            <th>Destination IP</th>
-                            <th>Attack</th>
+                            <th>
+                              <!-- Source IP -->
+                              <select
+                                id="filter-source-ip"
+                                class="form-control select2"
+                              ></select>
+                            </th>
+                            <th>
+                              <!-- Source Port -->
+                              <select
+                                id="filter-source-port"
+                                class="form-control select2"
+                              ></select>
+                            </th>
+                            <th>
+                              <!-- Destination IP -->
+                              <select
+                                id="filter-destination-ip"
+                                class="form-control select2"
+                              ></select>
+                            </th>
+                            <th>
+                              <!-- Attack -->
+                              <select
+                                id="filter-attack"
+                                class="form-control select2"
+                              ></select>
+                            </th>
                           </tr>
                         </thead>
                         <tbody id="packet-table-body">
@@ -481,6 +550,7 @@
                 </div>
               </div>
             </div>
+
             <div class="content-wrapper"></div>
           </div>
           <!-- content-wrapper ends -->
@@ -534,5 +604,83 @@
     <script src="/assets/js/proBanner.js"></script>
     <script src="/assets/js/dashboard.js"></script>
     <!-- End custom js for this page -->
+    <!-- Include jQuery and Select2 JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const packetTableBody = document.getElementById("packet-table-body");
+        const sourceIPFilter = $("#filter-source-ip");
+        const sourcePortFilter = $("#filter-source-port");
+        const destinationIPFilter = $("#filter-destination-ip");
+        const attackFilter = $("#filter-attack");
+
+        function uniqueValues(columnIndex) {
+          const values = new Set();
+          Array.from(packetTableBody.rows).forEach((row) => {
+            values.add(row.cells[columnIndex].innerText);
+          });
+          return Array.from(values);
+        }
+
+        function populateSelect2(selectElement, values, placeholder) {
+          selectElement
+            .empty()
+            .append(`<option value="">${placeholder}</option>`);
+          values.forEach((value) => {
+            const option = new Option(value, value);
+            selectElement.append(option);
+          });
+          selectElement.select2({
+            placeholder: placeholder,
+            allowClear: true,
+            width: "resolve",
+          });
+        }
+
+        function filterTable() {
+          const sourceIPValue = sourceIPFilter.val().toLowerCase();
+          const sourcePortValue = sourcePortFilter.val().toLowerCase();
+          const destinationIPValue = destinationIPFilter.val().toLowerCase();
+          const attackValue = attackFilter.val().toLowerCase();
+
+          Array.from(packetTableBody.rows).forEach((row) => {
+            const sourceIP = row.cells[2].innerText.toLowerCase();
+            const sourcePort = row.cells[3].innerText.toLowerCase();
+            const destinationIP = row.cells[4].innerText.toLowerCase();
+            const attack = row.cells[5].innerText.toLowerCase();
+
+            const sourceIPMatch =
+              !sourceIPValue || sourceIP.includes(sourceIPValue);
+            const sourcePortMatch =
+              !sourcePortValue || sourcePort.includes(sourcePortValue);
+            const destinationIPMatch =
+              !destinationIPValue || destinationIP.includes(destinationIPValue);
+            const attackMatch = !attackValue || attack.includes(attackValue);
+
+            if (
+              sourceIPMatch &&
+              sourcePortMatch &&
+              destinationIPMatch &&
+              attackMatch
+            ) {
+              row.style.display = "";
+            } else {
+              row.style.display = "none";
+            }
+          });
+        }
+
+        populateSelect2(sourceIPFilter, uniqueValues(2), "Source IP");
+        populateSelect2(sourcePortFilter, uniqueValues(3), "Source Port");
+        populateSelect2(destinationIPFilter, uniqueValues(4), "Destination IP");
+        populateSelect2(attackFilter, uniqueValues(5), "Attack");
+
+        sourceIPFilter.on("change", filterTable);
+        sourcePortFilter.on("change", filterTable);
+        destinationIPFilter.on("change", filterTable);
+        attackFilter.on("change", filterTable);
+      });
+    </script>
   </body>
 </html>
